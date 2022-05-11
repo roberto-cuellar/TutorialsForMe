@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="highlight/styles/night-owl.min.css">
+    <script src="highlight/highlight.min.js"></script>    
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Resaltando Sintaxis</title>
+</head>
+<body>
+    <div class="principal-container">
+        <h1>Resaltado de Sintaxis</h1>
+        <p>En este blog se mostrará como se implementa la librería <code>highlight.js</code>
+        a una página HTML, con el fin de resaltar sintaxis para una amplia gama de lenguages de programación.
+        <br> En el ejemplo #1 se puede apreciar el resultado final para el lenguaje <em> <b>JavaScript</b></em> 
+        </p>    
+<h2>Ejemplo 1:</h2>        
+
+<pre class="line-count">
+<code class="language-javascript">
+const bodyParser = require("body-parser")
+let array = [1,2,3] /*Esto es un comentario en JS*/
+array.forEach(e () => {
+    console.log(e)
+})
+const app = express();
+app.get("/",function(req,res){
+    res.send("Working")
+})
+ app.listen(3000,function(){
+    console.log("Server is listen in PORT 3000")
+ })</code>
+</pre>
+
+<p> Se abordará la solución al problema en 4 pasos:</p>
+<div class="contador">
+    <ul>
+        <li>Paso</li>
+        <p>Según la página que alberga la <a href="https://highlightjs.org/">librería</a>, existen
+            diversas formas de utilizar la misma en nuestros proyectos, bien sea por <em>CDN</em>
+            o descargando los archivos <em>CSS</em> y <em>JavaScript</em> e importandolos al proyecto.
+            En esta ocasión, vamos a optar por la segunda opción, entonces, pinchando en el <a href="https://highlightjs.org/">link</a>
+            a la librería entontramos la siguiente ventana:
+
+            <figure>
+                <img  class="imgLibreria" src="imagenes\1x\imgLibreria.png" alt="highlight Libreria" srcset="">
+                <figcaption>Fig.1 - Página Principal hljs (Fuente: https://highlightjs.org)</figcaption>
+            </figure>
+            <br>
+            En el botón <code><b>Get Versión 11.x.x</b></code> (encerrado en amarillo), nos lleva a la siguiente ventana:
+            <br>
+            <br>
+            <figure>
+                <img  class="imgLibreria noShadow" src="imagenes\1x\imgDescarga1.png" alt="highlight Libreria" srcset="">
+                <figcaption>Fig.2 - Página de descargas hljs (Fuente: https://highlightjs.org)</figcaption>
+            </figure>
+            <p>
+             En la figura 2, se pueden apreciar 3 secciones de la página de descargas:
+
+             En la primera parte se trata la implementación de la librería por medio de CDN's (fuera del alcance de este blog).
+             Para la segunda sección se tiene la selección de paquetes de lenguages para realizar una implementación específica
+             según la necesidad que se tenga, hay que tener en cuenta que por defecto, la librería detecta automáticamente
+             con qué tipo de lenguaje está tratando.
+             Por último, en la sección 3 se aprecia el botón de descarga, una vez seleccionados los paquetes a utilizar, se pincha allí
+             y ya obtiene una carpeta con los archivos <em>js</em> y <em>css</em> listos para incluirlos en nuestro proyecto.</p>
+            <br><br>
+            <li>Paso</li>
+            <p>Una vez descargado el archivo se procede incluirlo en la carpeta de nuestro proyecto</p>
+             <figure>
+                <img  class="imgLibreria noShadow" src="imagenes\1x\imgCarpeta1.png" alt="highlight Libreria" srcset="">
+                <figcaption>Fig.3 - Carpeta incluida en el directorio del proyecto</figcaption>
+             </figure>
+            <p>Adentro de la carpeta <code>highlight</code> se encuentran varias carpetas y archivos. En la figura 4, se pueden 
+            apreciar estos, por ahora nos interesan 3 de estos, la carpeta <code>styles</code> y los archivos
+            <code>highlight.js</code>  <code>highlight.min.js</code></p>
+            <figure>
+                <img  class="imgLibreria noShadow" src="imagenes\1x\imgCarpeta2.png" alt="highlight Libreria" srcset="">
+                <figcaption>Fig.4 - Contenido de la carpeta <code>highlight</code></figcaption>
+             </figure>
+             <p> Adentro de la carpeta <code>styles</code> se encuentran los <em>temas</em> disponibles. Se pueden apreciar varios de estos
+             en la figura 5.</p>
+             <figure>
+                <img  class="imgLibreria noShadow" src="imagenes\1x\imgTemas.png" alt="highlight Libreria" srcset="">
+                <figcaption>Fig.5 - Alguno de los temas disponibles.(1) monokay-sublime (2) mono-blue (3) zenburn</figcaption>
+             </figure>
+             <li>Paso</li>
+             <p> Para incluir estos estilos, se procede a incluir el link en el <code>head</code> del archivo <code>html</code>:</p>
+
+<pre><code>
+&ltpre&gt&ltcode&gt
+&lt!DOCTYPE html&gt              
+&lthead&gt
+    &ltlink rel="stylesheet" href="highlight/styles/night-owl.min.css"&gt
+    &ltscript src="highlight/highlight.min.js"&gt&lt/script&gt  
+    &ltscript&gthljs.highlightAll();&lt/script&gt
+    &ltlink rel="stylesheet" href="styles.css"&gt
+    &lttitle&gtResaltando Sintaxis &lt/title&gt
+&lt/head&gt                
+&lt/code&gt
+&lt/pre&gt
+</code>
+</pre>
+<p>En la línea 4 se incluye el estilo css con el tema seleccionado <code>night-owl.min.css</code>.
+En las líneas 5 y 6 se incluyen los scripts necesarios (Es importante colocarlos en el head del documento).
+Por último en la línea 7, se incluyen los estilos propios del documento. Notese que no se agrega ninguna clase en la etiqueta
+<code>code</code>, con esto, estamos esperando una detección automática del lenguaje por parte de la librería. 
+</p>
+    <li>Paso</li>
+    <p>Esta biblioteca no tiene la numeración por defecto, por lo que hay que agregarala. Se puede hacer de mucha formas, en esta ocasión 
+    se va a utilizar <code>JavaScript</code> para completar esta tarea. Importamos nuestro archivo <code>.js</code>
+    en nuestro archivo, justo antes de cerrar la etiqueda de <code>body</code>.
+    </p>
+<pre><code>
+&ltscript="index.js"&gt&lt/script&gt
+&lt/body&gt</code></pre>
+<p>Tenga en cuenta que para incluir códito <code>HTML</code> debe sustituir los símbolos <code>&lt  &gt</code> por sus respectivas entidades,
+<span class="spaceDelete"><b>& l t</b></span> para <code>&lt</code> y <span class="spaceDelete"><b>& g t</b></span> para <code>&gt</code>. De otra forma
+las etiquetas se interpretan como parte del código HTML y no como parte del código a mostrar en el campo de <code>code</code></p>
+<p>La lógica a seguir será: Detectar cuantos elementos <code>"pre code"</code>, recuperar el <code>HTML</code>  adentro de estos 
+realizar un <code>split</code> utilizando los saltos de líneas como limitadores <code>("\n")</code>. Con el arreglo de cada uno de los 
+<code>HTML</code>, a cada uno de los elementos del array se le agrega una etiqueta <code>&ltspan&gt j |&lt/span&gt</code>
+justo al inicio, siendo <code>j</code> el número de línea.
+</p>
+<pre><code clase="language-javascript">
+function enumerate() {
+    const cuerpo = document.querySelectorAll("pre code");/// Elementos con pre con un code adentro
+    const preCount = cuerpo.length;/// Cantidad de elementos seleccionados
+    for(let i = 0;i &ltpreCount;i++){/// Ciclo para cada uno de los HTML
+        let cuerpoArray = cuerpo[i].innerHTML.split("\n");/// Split el HTML apartir de los saltos de línea
+        let lnAHTML = cuerpoArray.length/// longitud del arreglo HTML
+        let newHtml = ""/// Buffer de almacenamiento del HTML modificado
+        for(let j = 1;j &ltlnAHTML;j++){/// Ciclo para cada elemento del array j es el número de línea
+            if (j/10 &gt = 1){/// Si el número de línea j no supera los dos dígitos se agrega un espácio, por efectos de visualización
+                cuerpoArray[j] =  '<span class="line-number">'+j+'|  </span>'+cuerpoArray[j]+"\n"
+            }else{
+                cuerpoArray[j] =  '<span class="line-number">'+j+' |   </span>'+cuerpoArray[j]+"\n"
+            }
+            newHtml += cuerpoArray[j];/// Se agrega el HTML modificado al buffer
+        }
+        cuerpo[i].innerHTML = newHtml;/// Se actualiza el HTML del elemento seleccionado
+    }    
+}</code></pre>
+    </ul>
+</div>
+
+<p> De esta forma se puede resaltar la sintaxis para una amplia gama de lenguajes de programación.</p>
+</div>    
+    <script src="index.js"></script>
+<footer>
+    <br>
+    Roberto Cuellar Lozano. 2022
+    <br>
+</footer>
+
+</body>
+</html>

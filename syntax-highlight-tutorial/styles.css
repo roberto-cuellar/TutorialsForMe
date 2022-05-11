@@ -1,0 +1,75 @@
+:root{
+    /* Color Pallete*/
+    --blue: #8D8DAA;
+    --darkGray: #73777B;
+    --ligthGray: #F7F5F2;
+    --red: #F56D91;
+    --color-transition-time: 200ms;
+}
+
+body{    
+    background-color: var(--ligthGray);
+    font-size: 20px;    
+    -webkit-transition: background-color var(--color-transition-time) linear;
+    -ms-transition: background-color var(--color-transition-time) linear;
+    transition: background-color var(--color-transition-time) linear; 
+    margin: 0;    
+}
+
+.body-img-click{
+    background-color: var(--darkGray);
+    -webkit-transition: background-color var(--color-transition-time) linear;
+    -ms-transition: background-color var(--color-transition-time) linear;
+    transition: background-color var(--color-transition-time) linear;
+}
+
+.principal-container{
+    width: 75%;
+    margin: auto;
+}
+
+pre code{
+    border-radius: 6px;
+    box-shadow: 5px 10px 8px;
+}
+
+.contador{
+    counter-reset: pasosContador;
+}
+
+li{
+    counter-increment: pasoContador;
+}
+p{
+    text-align: justify;
+}
+
+li::after{
+    content: " #  " counter(pasoContador) ":";
+}
+
+img{
+    width: 700px;
+}
+
+.imgLibreria{
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px;
+}
+
+.noShadow{
+    box-shadow: none;
+}
+
+.spaceDelete{
+    letter-spacing: -3px;
+}
+
+footer{
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--darkGray);
+    color: var(--ligthGray);
+    height: 50px;
+}
